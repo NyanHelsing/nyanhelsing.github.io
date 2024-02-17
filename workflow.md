@@ -35,6 +35,22 @@ graph TD
     style M fill:#fbb,stroke:#333,stroke-width:4px
 ```
 
+```mermaid
+graph TD
+    A[Feature Request] -->|Single Ticket Tracks All| B(Development)
+    B --> C[QA Testing]
+    C --> D{Find Bug 1}
+    C --> E{Find Bug 2}
+    D --> F[Fix Bug 1]
+    E --> G[Fix Bug 2]
+    F --> H[Re-test Bug 1]
+    G --> I[Re-test Bug 2]
+    H --> J[Feature Complete]
+    I --> J
+    style B fill:#f9f,stroke:#333,stroke-width:4px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style J fill:#fbb,stroke:#333,stroke-width:4px
+```
 #### 3. Enhanced Focus and Efficiency
 
 By separating tracking and work tickets, team members can focus more effectively on their specific tasks without being overwhelmed by the broader project context. Developers can concentrate on resolving bugs or implementing features, while project managers can monitor overall progress through the tracking tickets. This focused approach leads to greater efficiency and quality in both the management and execution of tasks.
