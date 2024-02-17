@@ -16,6 +16,7 @@ Note how the single ticket contains *every* state change related to the process,
 
 The fact every state change is on the ticket creates a lot of noise on the ticket which makes it more difficult to undersatnd the history of the ticket and what the current status is.
 The fact that it's sequential means only one task can be in progress at a time for a given ticket.
+For example; to notice that there were two QA sessions, the forst one idetified bugs and failed the ticket, and then a second session once the bugs were fixed which passed; would have to be determined by carefully analysing the history of state changes for this ticket.
 
 ```mermaid
 sequenceDiagram
@@ -39,13 +40,14 @@ sequenceDiagram
 ##### Parallel 2-tier Traking and Work Item Hierarchy
 
 In this process, we can see the Tracking Ticket only gets the most important state changes as events that happen from its tasks. This makes it easier to understand the state of a ticket at a glance because the ticket doesn't flip back and forth between states. We can also see more clearly how multiple tasks can happen in parallel because there can be multiple tasks in play in parallel, and the tracking ticket shows the common denominator.
+Using our example from the sequential process, we can now very clearly see that there are two QA sessions. The first which created two bugs, (causing a QA fail state on the tracking ticket), and a second QA session that was initiated after the bugs had been resolved which passed.
 
 ```mermaid
 sequenceDiagram
     participant TT as Tracking Ticket
     participant Dev as Development
-    participant QA as QA Testing 1
-    participant QA2 as QA Testing 2
+    participant QA as QA Testing 1 (Raised Bugs)
+    participant QA2 as QA Testing 2 (Pass)
     participant B1 as Bug 1 Dev
     participant B1T as Bug 1 Testing
     participant B2 as Bug 2 Dev
