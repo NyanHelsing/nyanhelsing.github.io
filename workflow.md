@@ -57,7 +57,7 @@ sequenceDiagram
     Dev->>TT: Finish Dev
     TT->>QA: Begin Testing
     QA->>B1: Identify Bug 1
-    B1->>TT: QA Failed
+    QA->>TT: QA Failed
     QA->>B2: Identify Bug 2
     QA->>TT: Testing Complete
     B2->>B2T: Rework Bug 2
