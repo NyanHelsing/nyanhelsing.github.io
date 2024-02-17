@@ -30,8 +30,12 @@ Having separate tickets for tracking and work streamlines communication among te
 
 In conclusion, implementing tiered tickets in project management systems enhances parallel processing of tasks, improves visibility and accountability, increases focus and efficiency, provides flexibility in task management, and streamlines communication. This approach addresses the complexities of modern software development projects, where multiple activities often need to progress simultaneously without hindering each other. By adopting tiered tickets, teams can achieve a more dynamic, transparent, and efficient workflow, ultimately leading to the timely and successful completion of projects.
 
-On a high level this is how our Story process works. There are details intentionally omitted in order to simplify the overview.
-Stories are automated and will transition between these states automatically when the even noted in the arrow occurs.
+
+## Implementation
+
+### Tracking Ticket Process
+
+On a high level we want to track the state of a change from inception to completion. This applies to bugs, features etc. In the tiered process outlined above, this is the tracking ticket.
 
 ```mermaid
 stateDiagram-v2
@@ -44,5 +48,24 @@ stateDiagram-v2
     Deployment --> Rollout: Code Changes Merged
     Rollout --> Productization: Rolled Out to Guests
     Productization --> [*]: Done
-    
 ```
+
+### Work Item (Task) Ticket Types
+
+A Task is a unit of work that can be completed and delivered by one person (or a pair if pair programming or swarming on a task). If a Task exists it should be ready to work on. A task should not be created if it is noto ready immediately ready to be worked on. A Task has a very simple process on its own:
+
+#### Test Task
+
+```mermaid
+stateDiagram-v2
+    [*] --> Ready
+    Ready --> Testing
+    Testing --> Pass
+    Testing --> Fail
+    Pass --> [*]
+    Fail --> [*] 
+```
+
+- Development
+- Test
+- 
