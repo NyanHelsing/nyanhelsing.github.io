@@ -11,7 +11,7 @@ stateDiagram-v2
     [*] --> Triage: New
     Triage --> Development: Start Development
     Development --> Triage: Needs Elaboration
-    Development --> Test: PR Moves Out of Draft State && All Bug Children Closed
+    Development --> Test: PR Open && All Bug Children Closed
     Test --> Development: Bug Ticket Created
     Test --> Deployment: QA Pass
     Deployment --> Rollout: Code Changes Merged
