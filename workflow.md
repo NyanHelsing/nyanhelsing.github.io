@@ -15,21 +15,20 @@ Tiered tickets allow work to be done in parallel, enhancing the team's productiv
 ```mermaid
 sequenceDiagram
     participant T as Ticket
-    participant Dev as Development
-    participant QA as QA Testing
     
-    T->>Dev: Assign Development
-    Dev->>T: Submit for QA
-    T->>QA: Begin QA
-    QA->>T: Raise Bug 1
-    T->>Dev: Rework Bug 1
-    Dev->>T: Submit Bug 1 Fix
-    T->>QA: Test Bug 1 Fix
-    QA->>T: Raise Bug 2
-    T->>Dev: Rework Bug 2
-    Dev->>T: Submit Bug 2 Fix
-    T->>QA: Test Bug 2 Fix
-    QA->>T: Test Complete
+    T->>T: Assign Development
+    T->>T: Submit for QA
+    T->>T: Begin QA
+    T->>T: Raise Bug 1
+    T->>T: Rework Bug 1
+    T->>T: Submit Bug 1 Fix
+    T->>T: Test Bug 1 Fix
+    T->>T: Raise Bug 2
+    T->>T: Rework Bug 2
+    T->>T: Submit Bug 2 Fix
+    T->>T: Test Bug 2 Fix
+    T->>T: Retest Now Bugs Are Fixed
+    T->>T: Test Pass
 ```
 
 ##### Parallel 2-tier Traking and Work Item Hierarchy
@@ -38,7 +37,8 @@ sequenceDiagram
 sequenceDiagram
     participant TT as Tracking Ticket
     participant Dev as Development
-    participant QA as QA Testing
+    participant QA as QA Testing 1
+    participant QA2 as QA Testing 2
     participant B1 as Bug 1 Dev
     participant B1T as Bug 1 Testing
     participant B2 as Bug 2 Dev
@@ -50,11 +50,13 @@ sequenceDiagram
     QA->>B1: Identify Bug 1
     B1->>TT: QA Failed
     QA->>B2: Identify Bug 2
+    QA->>TT: Testing Complete
     B2->>B2T: Rework Bug 2
     B1->>B1T: Rework Bug 1
-    B2T->>QA: Bug 2 Resolved
-    B1T->>QA: Bug 1 Resolved
-    QA->>TT: Feature Complete
+    B2T->>TT: Bug 2 Resolved
+    B1T->>TT: Bug 1 Resolved
+    TT->>QA2: Retest Now Bugs Are Fixed
+    QA2->>TT: Test Pass
 ```
 
 #### 2. Improved Visibility and Accountability
