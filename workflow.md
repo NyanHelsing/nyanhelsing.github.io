@@ -13,7 +13,6 @@ stateDiagram-v2
     Development --> Triage: Needs Elaboration
     Development --> Test: PR Moves Out of Draft State && All Bug Children Closed
     Test --> Development: Bug Ticket Created
-    on_fail --> [*]: Bug Tickets Created
     Test --> Deployment: QA Pass
     Deployment --> Rollout: Code Changes Merged
     Rollout --> Productization: Rolled Out to Guests
