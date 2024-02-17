@@ -6,7 +6,7 @@ On a high level this is how our change process works. There are details intentio
 
 ```mermaid
 stateDiagram-v2
-    Triage --> Dev: Start Development
+    Triage --> Development: Start Development
     Development --> Triage: Needs Elaboration
     Development --> Test: Implemented
     Test --> Development: QA Fail
