@@ -59,11 +59,11 @@ A Task is a unit of work that can be completed and delivered by one person (or a
 ```mermaid
 stateDiagram-v2
     [*] --> Ready
-    Ready --> Testing
-    Testing --> Pass
-    Testing --> Fail
-    Pass --> [*]
-    Fail --> [*] 
+    Ready --> Testing: Begin Testing
+    Testing --> Pass: No Bugs Found
+    Testing --> Fail: Automatically transitioned when a Bug Child is created
+    Pass --> [*]: Automation Creates Deployment Task
+    Fail --> [*]: Testing Completed
 ```
 
 - Development
