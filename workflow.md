@@ -42,7 +42,7 @@ sequenceDiagram
     participant B1 as Bug 1 Dev
     participant B1T as Bug 1 Testing
     participant B2 as Bug 2 Dev
-    participane B2T as Bug 2 Testing
+    participant B2T as Bug 2 Testing
 
     TT->>Dev: Assign Development
     Dev->>TT: Finish Dev
