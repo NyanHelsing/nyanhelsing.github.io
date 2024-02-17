@@ -14,6 +14,27 @@ Tiered tickets allow work to be done in parallel, enhancing the team's productiv
 
 With tiered tickets, project managers and team members gain better visibility into the project's progress. The tracking ticket provides a high-level overview of the task's status, while work tickets offer detailed insights into specific activities and their completion status. This separation enhances accountability, as it becomes clearer who is responsible for what aspect of the work at any given time.
 
+```mermaid
+graph TD
+    A[Feature Request] -->|Tracks Overall Progress| B(Tracking Ticket)
+    B --> C{QA Testing}
+    B --> D[Development]
+    D --> E[Bug 1]
+    D --> F[Bug 2]
+    E --> G[QA on Bug 1]
+    F --> H[QA on Bug 2]
+    G --> I{Re-test Bug 1}
+    H --> J{Re-test Bug 2}
+    I --> K[Close Bug 1]
+    J --> L[Close Bug 2]
+    K --> M[Feature Complete]
+    L --> M
+    style B fill:#f9f,stroke:#333,stroke-width:4px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfb,stroke:#333,stroke-width:2px
+    style M fill:#fbb,stroke:#333,stroke-width:4px
+```
+
 #### 3. Enhanced Focus and Efficiency
 
 By separating tracking and work tickets, team members can focus more effectively on their specific tasks without being overwhelmed by the broader project context. Developers can concentrate on resolving bugs or implementing features, while project managers can monitor overall progress through the tracking tickets. This focused approach leads to greater efficiency and quality in both the management and execution of tasks.
@@ -56,6 +77,19 @@ stateDiagram-v2
 
 A Task is a unit of work that can be completed and delivered by one person (or a pair if pair programming or swarming on a task). If a Task exists it should be ready to work on. A task should not be created if it is noto ready immediately ready to be worked on. A Task has a very simple process on its own:
 
+#### Triage
+
+A triage Task is created when any ticket gets into an undesired state. This could include tickets that are missiong information because they are new, or because information was accidentally removed or entered incorrectly, or a ticket has been flagged. The goal of triage is to get a ticket onto the happy path. Ideally the only tickets that need triage are *new* tickets, and 
+
+```mermaid
+stateDiagram-v2
+    [*] --> NeedsAttention: Automatically Created
+    NeetsAttention --> [*]: Resolve (Transitions automatically once the issue with the ticket is resolved
+
+#### Development
+
+The development Task is created when the 
+
 #### Test Task
 
 ```mermaid
@@ -68,9 +102,6 @@ stateDiagram-v2
     Fail --> [*]: Testing Completed
 ```
 
-#### Development
-
-The development Task is created when the 
 
 #### Deployment
 
