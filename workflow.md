@@ -12,5 +12,7 @@ stateDiagram-v2
     Test --> Development: QA Fail
     Test --> Deployment: QA Pass
     Deployment --> Rollout: Deployed
-    Rollout --> Rolled Out: Prod
+    Rollout --> Productization: Rolled Out
+    Productization --> [*]: Done
+    
 ```
