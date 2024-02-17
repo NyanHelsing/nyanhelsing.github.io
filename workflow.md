@@ -10,6 +10,53 @@ In the lifecycle of software development, tasks often progress through various s
 
 Tiered tickets allow work to be done in parallel, enhancing the team's productivity. For example, once development is completed on a feature, it moves to QA for testing. If QA identifies bugs, the development team can begin working on these bugs immediately. By having separate tickets for tracking (to oversee the feature's overall progress) and for the actual work (to handle specific bugs), development and QA can occur simultaneously without waiting for the other to complete. This parallel processing ensures that while QA is validating the fix for one bug, developers can work on fixing another, significantly speeding up the overall process.
 
+##### Traditional single-tier process
+
+```mermaid
+sequenceDiagram
+    participant FR as Feature Request
+    participant Dev as Development
+    participant QA as QA Testing
+    participant B1 as Bug 1
+    participant B2 as Bug 2
+
+    FR->>Dev: Assign Development
+    Dev->>QA: Submit for QA
+    QA->>B1: Identify and Assign Bug 1 Fix
+    B1->>QA: Submit Bug 1 Fix
+    QA->>B2: Identify and Assign Bug 2 Fix
+    B2->>QA: Submit Bug 2 Fix
+    QA->>FR: Feature Complete
+```
+
+##### Parallel 2-tier Traking and Work Item Hierarchy
+
+```mermaid
+sequenceDiagram
+    participant FR as Feature Request
+    participant TT as Tracking Ticket
+    participant Dev as Development
+    participant QA as QA Testing
+    participant B1 as Bug 1
+    participant B2 as Bug 2
+
+    FR->>TT: Initiate
+    TT->>Dev: Assign Development
+    Dev->>QA: Submit for QA
+    QA->>B1: Identify Bug 1
+    QA->>B2: Identify Bug 2
+    parallel Bug 1 Fixing
+        B1->>Dev: Assign Bug 1 Fix
+        Dev->>QA: Submit Bug 1 Fix
+        QA->>TT: Bug 1 Fixed
+    and Bug 2 Fixing
+        B2->>Dev: Assign Bug 2 Fix
+        Dev->>QA: Submit Bug 2 Fix
+        QA->>TT: Bug 2 Fixed
+    end
+    TT->>FR: Feature Complete
+```
+
 #### 2. Improved Visibility and Accountability
 
 With tiered tickets, project managers and team members gain better visibility into the project's progress. The tracking ticket provides a high-level overview of the task's status, while work tickets offer detailed insights into specific activities and their completion status. This separation enhances accountability, as it becomes clearer who is responsible for what aspect of the work at any given time.
