@@ -14,47 +14,47 @@ Tiered tickets allow work to be done in parallel, enhancing the team's productiv
 
 ```mermaid
 sequenceDiagram
-    participant FR as Feature Request
+    participant T as Ticket
     participant Dev as Development
     participant QA as QA Testing
-    participant B1 as Bug 1
-    participant B2 as Bug 2
-
-    FR->>Dev: Assign Development
-    Dev->>QA: Submit for QA
-    QA->>B1: Identify and Assign Bug 1 Fix
-    B1->>QA: Submit Bug 1 Fix
-    QA->>B2: Identify and Assign Bug 2 Fix
-    B2->>QA: Submit Bug 2 Fix
-    QA->>FR: Feature Complete
+    
+    T->>Dev: Assign Development
+    Dev->>T: Submit for QA
+    T->>QA: Begin QA
+    QA->>T: Raise Bug 1
+    T->>Dev: Rework Bug 1
+    Dev->>T: Submit Bug 1 Fix
+    T->>QA: Test Bug 1 Fix
+    QA->>T: Raise Bug 2
+    T->>Dev: Rework Bug 2
+    Dev->>T: Submit Bug 2 Fix
+    T->>QA: Test Bug 2 Fix
+    QA->>T: Test Complete
 ```
 
 ##### Parallel 2-tier Traking and Work Item Hierarchy
 
 ```mermaid
 sequenceDiagram
-    participant FR as Feature Request
     participant TT as Tracking Ticket
     participant Dev as Development
     participant QA as QA Testing
-    participant B1 as Bug 1
-    participant B2 as Bug 2
+    participant B1 as Bug 1 Dev
+    participant B1T as Bug 1 Testing
+    participant B2 as Bug 2 Dev
+    participane B2T as Bug 2 Testing
 
-    FR->>TT: Initiate
     TT->>Dev: Assign Development
-    Dev->>QA: Submit for QA
+    Dev->>TT: Finish Dev
+    TT->>QA: Begin Testing
     QA->>B1: Identify Bug 1
+    B1->>TT: QA Failed
     QA->>B2: Identify Bug 2
-    parallel Bug 1 Fixing
-        B1->>Dev: Assign Bug 1 Fix
-        Dev->>QA: Submit Bug 1 Fix
-        QA->>TT: Bug 1 Fixed
-    and Bug 2 Fixing
-        B2->>Dev: Assign Bug 2 Fix
-        Dev->>QA: Submit Bug 2 Fix
-        QA->>TT: Bug 2 Fixed
-    end
-    TT->>FR: Feature Complete
+    B2->>B2T: Rework Bug 2
+    B1->>B1T: Rework Bug 1
+    B2T->>QA: Bug 2 Resolved
+    B1T->>QA: Bug 1 Resolved
+    QA->>TT: Feature Complete
 ```
 
 #### 2. Improved Visibility and Accountability
