@@ -11,11 +11,12 @@ stateDiagram-v2
     [*] --> Triage: New
     Triage --> Development: Start Development
     Development --> Triage: Needs Elaboration
-    Development --> Test: Implemented
-    Test --> Development: QA Fail
+    Development --> Test: PR Moves Out of Draft State && All Bug Children Closed
+    Test --> Development: Bug Ticket Created
+    on_fail --> [*]: Bug Tickets Created
     Test --> Deployment: QA Pass
-    Deployment --> Rollout: Deployed
-    Rollout --> Productization: Rolled Out
+    Deployment --> Rollout: Code Changes Merged
+    Rollout --> Productization: Rolled Out to Guests
     Productization --> [*]: Done
     
 ```
