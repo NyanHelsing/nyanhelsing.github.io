@@ -35,7 +35,7 @@ In conclusion, implementing tiered tickets in project management systems enhance
 
 ### Tracking Ticket Process
 
-On a high level we want to track the state of a change from inception to completion. This applies to bugs, features etc. In the tiered process outlined above, this is the tracking ticket.
+On a high level we want to track the state of a change from inception to completion. This applies to bugs, features etc. In the tiered process outlined above, this is the tracking ticket. The status of the tracking ticket changes automatically and is driven by events that occur in relation to the ticket such as task completion, etc.
 
 ```mermaid
 stateDiagram-v2
@@ -45,8 +45,8 @@ stateDiagram-v2
     Development --> Test: PR Open && All Bug Children Closed
     Test --> Development: Bug Ticket Created
     Test --> Deployment: QA Pass
-    Deployment --> Development: Revert Changes
     Deployment --> Rollout: Code Changes Merged
+    Rollout --> Development: Revert Changes
     Rollout --> Productization: Rolled Out to Guests
     Productization --> Rollout: Rollback
     Productization --> [*]: Done
@@ -68,6 +68,19 @@ stateDiagram-v2
     Fail --> [*]: Testing Completed
 ```
 
-- Development
-- Test
-- 
+#### Development
+
+The development Task is created when the 
+
+#### Deployment
+
+The Deployment Task is almost totally automated with the exception of pressing the merge button, though that may even be automated in the future.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Queued: Automatically Join the deploy Queue
+    Queued --> Ready: Automatic State Transition on Reaching the Front of the Queue
+    Ready --> Queued: Defer (Automatic State Transition if the Deploy Queue is Rearranged for a Higher Priority Deployment)
+    Ready --> Deploying: Merge (Automatic State Transition Based on the Merge of the PR)
+    Deploying --> [*]: Deployed (Automatic State Transition Based on Main Pipeline Completion)
+```
