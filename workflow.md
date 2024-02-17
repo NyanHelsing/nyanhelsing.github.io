@@ -12,6 +12,11 @@ Tiered tickets allow work to be done in parallel, enhancing the team's productiv
 
 ##### Traditional single-tier process
 
+Note how the single ticket contains *every* state change related to the process, and that it's sequential.
+
+The fact every state change is on the ticket creates a lot of noise on the ticket which makes it more difficult to undersatnd the history of the ticket and what the current status is.
+The fact that it's sequential means only one task can be in progress at a time for a given ticket.
+
 ```mermaid
 sequenceDiagram
     participant T as Ticket
@@ -32,6 +37,8 @@ sequenceDiagram
 ```
 
 ##### Parallel 2-tier Traking and Work Item Hierarchy
+
+In this process, we can see the Tracking Ticket only gets the most important state changes as events that happen from its tasks. This makes it easier to understand the state of a ticket at a glance because the ticket doesn't flip back and forth between states. We can also see more clearly how multiple tasks can happen in parallel because there can be multiple tasks in play in parallel, and the tracking ticket shows the common denominator.
 
 ```mermaid
 sequenceDiagram
