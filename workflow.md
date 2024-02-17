@@ -45,8 +45,10 @@ stateDiagram-v2
     Development --> Test: PR Open && All Bug Children Closed
     Test --> Development: Bug Ticket Created
     Test --> Deployment: QA Pass
+    Deployment --> Development: Revert Changes
     Deployment --> Rollout: Code Changes Merged
     Rollout --> Productization: Rolled Out to Guests
+    Productization --> Rollout: Rollback
     Productization --> [*]: Done
 ```
 
