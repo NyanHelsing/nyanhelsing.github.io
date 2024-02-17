@@ -9,8 +9,8 @@ stateDiagram-v2
     Triage --> Dev: Start Development
     Development --> Triage: Needs Elaboration
     Development --> Test: Implemented
-    Test --> Dev: QA Fail
-    Test --> Deploment: QA Pass
+    Test --> Development: QA Fail
+    Test --> Deployment: QA Pass
     Deployment --> Rollout: Deployed
     Rollout --> Rolled Out: Prod
 ```
