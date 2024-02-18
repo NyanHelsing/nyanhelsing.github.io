@@ -157,6 +157,7 @@ stateDiagram-v2
 Spikes are used to investigate what additional tasks will need to be created for a ticket, or perhaps if additional tickets will need to be created.
 
 ```mermaid
+stateDiagram-v2
     [*] --> Ready: Spike Created
     Ready --> Investigating: Begin Investigation
     Investigating --> [*]: Investigation Complete (New tickets created, Confluence doc, etc.)
