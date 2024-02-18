@@ -145,7 +145,7 @@ stateDiagram-v2
 ```
 
 ```mermaid
-stateDiageam-v2
+stateDiagram-v2
     [*] --> NeedsAttention: Created (MANUAL)
     NeedsAttention --> Investigating: Investigate (MANUAL)
     Investigating --> [*]: Resolve (MANUAL)
