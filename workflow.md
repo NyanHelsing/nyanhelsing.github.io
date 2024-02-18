@@ -104,7 +104,8 @@ On a high level we want to track the state of a change from inception to complet
 ```mermaid
 stateDiagram-v2
     [*] --> Triage: New
-    Triage --> Development: Start Development
+    Triage --> Refined: Fully Detailed and Prioritized
+    Refined --> Development: Start Development
     Development --> Triage: Needs Elaboration
     Development --> Test: PR Open && All Bug Children Closed
     Test --> Development: Bug Ticket Created
@@ -122,18 +123,56 @@ A Task is a unit of work that can be completed and delivered by one person (or a
 
 #### Triage
 
-A triage Task is created when any ticket gets into an undesired state. This could include tickets that are missiong information because they are new, or because information was accidentally removed or entered incorrectly, or a ticket has been flagged. The goal of triage is to get a ticket onto the happy path. Ideally the only tickets that need triage are *new* tickets, and 
+A triage Task is created when a ticket is new or when a ticket gets into an undesired state. This could include tickets that are missiong information because they are new, or because information was accidentally removed or entered incorrectly, or a ticket has been flagged. The goal of triage is to get a ticket onto the happy path.
+
+A triage Task can be created automatically based on those conditions or can be created manually for scenarios that do not have automation to monitor the condition.
+
+The NeedsAttention --> Investigation serves to communicate to the team that the triage task has been seen and while it's not resolved yet it _is_ getting the attention it needs.
+
+- If there is no Summary
+- If there is no Description
+- If the tracking ticket was flagged
+- If Develompent requested additional elaboration`
+- If QA needs product signoff or clarification
+- If the planned date or scale for rollout needs to be changed
 
 ```mermaid
 stateDiagram-v2
     [*] --> NeedsAttention: Automatically Created
+    NeedsAttention --> Investigating: Investigate (MANUAL)
+    Investigating --> [*]: Resolve (Transitions automatically once the issue with the ticket is resolved)
     NeedsAttention --> [*]: Resolve (Transitions automatically once the issue with the ticket is resolved)
+```
+
+```mermaid
+stateDiageam-v2
+    [*] --> NeedsAttention: Created (MANUAL)
+    NeedsAttention --> Investigating: Investigate (MANUAL)
+    Investigating --> [*]: Resolve (MANUAL)
+    NeedsAttention --> [*]: Resolve (MANUAL)
+```
+
+#### Spike
+
+Spikes are used to investigate what additional tasks will need to be created for a ticket, or perhaps if additional tickets will need to be created.
+
+```mermaid
+    [*] --> Ready: Spike Created
+    Ready --> Investigating: Begin Investigation
+    Investigating --> [*]: Investigation Complete (New tickets created, Confluence doc, etc.)
 ```
 
 #### Development
 
-The development Task is created when the 
+The development Task is created when the tracking ticket has been fully populated with all the details that development requires in order to start work.
 
+```mermaid
+stateDiagram-v2
+    [*] --> Ready: This happens automatically once the ticket has been Refined.
+    Ready --> Implementation: Start Work (Manual Transition will create a branch, otherwise this transition happens Automatically when a branch is created)
+    Implementation --> CodeReview: Happens Automatically once the Ticket is moved out of Draft state
+    CodeReview --> [*]: Ready for Testing. Happens Automatically once Code Review passes
+```
 #### Test Task
 
 ```mermaid
