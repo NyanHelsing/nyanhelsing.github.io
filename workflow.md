@@ -127,7 +127,7 @@ A triage Task is created when any ticket gets into an undesired state. This coul
 ```mermaid
 stateDiagram-v2
     [*] --> NeedsAttention: Automatically Created
-    NeetsAttention --> [*]: Resolve (Transitions automatically once the issue with the ticket is resolved
+    NeedsAttention --> [*]: Resolve (Transitions automatically once the issue with the ticket is resolved)
 ```
 
 #### Development
