@@ -92,7 +92,6 @@ Tiered tickets provide the flexibility needed to adapt to changes in project sco
 Having separate tickets for tracking and work streamlines communication among team members. Questions, updates, and discussions related to specific work items can be contained within those work tickets, keeping the tracking ticket focused on overall progress and decision-making. This separation helps reduce noise and ensures that relevant information is easily accessible to those who need it.
 
 
-In conclusion, implementing tiered tickets in project management systems enhances parallel processing of tasks, improves visibility and accountability, increases focus and efficiency, provides flexibility in task management, and streamlines communication. This approach addresses the complexities of modern software development projects, where multiple activities often need to progress simultaneously without hindering each other. By adopting tiered tickets, teams can achieve a more dynamic, transparent, and efficient workflow, ultimately leading to the timely and successful completion of projects.
 
 
 ## Implementation
@@ -116,6 +115,20 @@ stateDiagram-v2
     Productization --> Rollout: Rollback
     Productization --> [*]: Done
 ```
+
+#### Triage Phase
+
+When a ticket is created, if it is not completely filled out with all the neccesary information, automation may create Triage tasks for each of the issues with the ticket, eg if the components for the ticket have not been specified, or the ticket was not added to an Epic. Once the ticket has all the neccesary information it may be transitioned to the Refinement Phase.
+
+#### Refinement Phase
+
+Once a ticket has the neccesary information, it may be brought to refinement; this is a manual state change to be perfomed by Product, BA, etc. This is a manual step in order to provide backpressure to the incoming tickets so that the team doesn't take on an excessive workload. When the team does backlog refinement, the tickets that are in "Refinement Ready" are the tickets that will be discussed. Refinement is complete once the ticket has been estimated. Once it is estimated, the ticket will automatically be transitioned to the Development Phase, and the Development Task will be automatically created.
+
+#### Productization Phase
+
+Once a ticket reaches the Productization Phase, a new Productization tracking ticket will be automatically created. If Productization is needed, then the automatically created tracking ticket will have all the neccesary information already and will automatically land in development ready, with 
+
+If Productization is not needed, then all work for the original tracking ticket is done. This new tracking ticket can be transitioned to done/not needed, which will also transition the original ticket to done.
 
 ### Work Item (Task) Ticket Types
 
@@ -186,8 +199,7 @@ stateDiagram-v2
     Fail --> [*]: Testing Completed
 ```
 
-
-#### Deployment
+#### Deployment Task
 
 The Deployment Task is almost totally automated with the exception of pressing the merge button, though that may even be automated in the future.
 
@@ -199,3 +211,20 @@ stateDiagram-v2
     Ready --> Deploying: Merge (Automatic State Transition Based on the Merge of the PR)
     Deploying --> [*]: Deployed (Automatic State Transition Based on Main Pipeline Completion)
 ```
+
+#### Rollout Task
+
+The Rollout Task enables the tracking of a rollout. The rollout will plan will have already been discussed and agreed upon, and this task documents whether or not the rollout has been performed.
+
+It should be possible to use Launch Darkly rollouts and the LD API to automatically update this ticket.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Ready: This task is created automatically
+    Ready --> InProgress: The rollout has begun
+    InProgress --> [*]: Rolled Out (Automatically creates the Productization Ticket)
+```
+
+## Conclusion
+
+Implementing tiered tickets in project management systems enhances parallel processing of tasks, improves visibility and accountability, increases focus and efficiency, provides flexibility in task management, and streamlines communication. This approach addresses the complexities of modern software development projects, where multiple activities often need to progress simultaneously without hindering each other. By adopting tiered tickets, teams can achieve a more dynamic, transparent, and efficient workflow, ultimately leading to the timely and successful completion of projects.
