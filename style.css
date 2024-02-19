@@ -1,4 +1,13 @@
 
+html {
+    background-color: #bad;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .mermaid {
     text-align: center;
 }
