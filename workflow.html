@@ -2,34 +2,44 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Hind:wght@400;700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Unbounded:wght@300;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/style.css" />
+
     </head>
 
     <body>
 
-        <nav>
+        <nav class="top">
             <ol>
                 <li><a href="/index.html">Home</a></li>
                 <li>Workflow</li>
             </ol>
-        <nav>
+        </nav>
+
+        <h1>Workflow</h1>
+
+        <p>This state diagram represents the workflow for a feature request. The workflow is a series of states that a ticket can be in. The ticket will move from one state to another based on the actions taken by the team. The workflow is a visual representation of the process that a ticket goes through from the time it is created until it is completed.</p>
 
         <pre class="mermaid">
             stateDiagram-v2
                 [*] --> Triage: New
                 Triage --> Refined: Fully Detailed and Prioritized
-                Refined --> Development: Start Development
-                Development --> Triage: Needs Elaboration
-                Development --> Test: PR Open && All Bug Children Closed
-                Test --> Development: Bug Ticket Created
+                Refined --> Implementation: Begin Implementation
+                Implementation --> Triage: Needs Elaboration
+                Implementation --> Test: PR Open & All Bugs Resolved
+                Test --> Implementation: Bug Ticket Created
                 Test --> Deployment: QA Pass
                 Deployment --> Rollout: Code Changes Merged
-                Rollout --> Development: Revert Changes
+                Rollout --> Implementation: Revert Changes
                 Rollout --> Productization: Rolled Out to Guests
                 Productization --> Rollout: Rollback
                 Productization --> [*]: Done
         </pre>
 
+        <h2>Submit an Intake</h2>
+        <p>An intake is a request for a new feature or a change to an existing feature. It is the first step in the workflow. When an intake is submitted it will create a ticket and the workflow will begin.</p>
         <form>
             <textarea id="workflow" rows="10" cols="50"></textarea>
             <button type="submit">Submit</button>
