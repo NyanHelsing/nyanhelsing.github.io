@@ -1,13 +1,5 @@
-// just a really simple server to serve the static files in the current directory
-
-// static file server
-import express from 'express';
-import path from 'path';
-
-const port = 3000;
-
-express()
-    .use(express.static("."))
-    .listen(port, () => {
-        console.log(`Server listening on port ${port}`);
-    });
+Deno.serve(({
+    url
+}) => {
+    const path = new URL(url, import.meta.url).pathname;
+    new Response(`Hello, path is ${path}`);
