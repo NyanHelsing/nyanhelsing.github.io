@@ -79,6 +79,10 @@ sequenceDiagram
 
 With tiered tickets, project managers and team members gain better visibility into the project's progress. The tracking ticket provides a high-level overview of the task's status, while work tickets offer detailed insights into specific activities and their completion status. This separation enhances accountability, as it becomes clearer who is responsible for what aspect of the work at any given time.
 
+When We look at a single ticket that can be in many different states, it can become quite frought to make sure the ticket is always in the correct state due to the complex state flow that the ticket follows. In order to make sure the ticket is always in a valid state requires a thorough and deep understanding of exaclty what the requirements for each step is, which is highly cross functional. It also requires a very strong attention to detail wich is not a universal skill. Therefore it is quite common for tickets to end up in a status where they get lost or in a state that no longer shows up on a board.
+
+A two tiered tracking system solves this by breacking each of the critical phases of a workflow into the simplest possible workflows. Most tasks are described as a decision, or even simpler as a todo. In this way each task is very simple and understandable and because the task doesn't transfer across team functions, it isn't neccesary that every team function be aware of the entire workflow's state and conditions; the team can fully know and understand just the simpler tas that is relevent to their function and the tracking ticket responds automatically and accordingly.
+
 ### 3. Enhanced Focus and Efficiency
 
 By separating tracking and work tickets, team members can focus more effectively on their specific tasks without being overwhelmed by the broader project context. Developers can concentrate on resolving bugs or implementing features, while project managers can monitor overall progress through the tracking tickets. This focused approach leads to greater efficiency and quality in both the management and execution of tasks.
