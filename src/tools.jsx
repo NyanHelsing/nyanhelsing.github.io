@@ -8,7 +8,17 @@ export const Tools = () => {
     const emailRef = useRef();
     const subjectRef = useRef();
     const bodyRef = useRef();
-    const [malito, setMailto] = useState("");
+    const [mailto, setMailto] = useState("");
+
+    const mailtoParam = new URLSearchParams(locator.search).get("mailto");
+    const portableMailto = mailto ? encodeURIComponent(btoa(mailto)) : "";
+
+    if (mailtoParam) {
+        console.log("DECODING", mailtoParam);
+        const mailto = atob(decodeURIComponent(mailtoParam));
+        const url = new URL(mailto);
+        window.location.href = url.href;
+    }
 
     return (
         new Set(["/tools.html", "/tools"]).has(locator.pathname) && (
@@ -43,8 +53,9 @@ export const Tools = () => {
                         Generate mailto link
                     </button>
                     <output>
-                        <pre>{malito}</pre>
-                        <a href={malito}>mailto link</a>
+                        <pre>{mailto}</pre>
+                        <a href={mailto}>mailto link</a>
+                        <pre>https://nyanhelsing.github.io/tools.html?mailto={portableMailto}</pre>
                     </output>
                 </form>
             </>
