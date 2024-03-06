@@ -1,8 +1,8 @@
 // just a really simple server to serve the static files in the current directory
 
+import path from "path";
 // static file server
-import express from 'express';
-import path from 'path';
+import express from "express";
 
 const port = 3000;
 
