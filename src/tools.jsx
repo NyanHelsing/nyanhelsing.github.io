@@ -12,8 +12,9 @@ export const Tools = () => {
     const bodyRef = useRef();
     const [mailto, setMailto] = useState("");
 
+    const mailtoParam = new URLSearchParams(locator.search).get("mailto");
+
     useEffect(() => {
-        const mailtoParam = new URLSearchParams(locator.search).get("mailto");
         if (mailtoParam && !openedMailto.current) {
             const mailto = atob(decodeURIComponent(mailtoParam));
             window.location.href = mailto;
