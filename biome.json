@@ -12,7 +12,7 @@
             "indentStyle": "space",
             "indentWidth": 4,
             "lineEnding": "lf",
-            "lineWidth": 100,
+            "lineWidth": 80,
             "bracketSameLine": false
         }
     },

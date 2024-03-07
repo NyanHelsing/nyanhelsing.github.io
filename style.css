@@ -13,12 +13,20 @@ body {
     min-height: 100vh;
 }
 
+code {
+ padding: 0.2em 0.3em 0.1em 0.3em;
+ border-radius: 0.3em;
+ margin: -0.2em 0 -0.1em 0;
+
+    background-color: #f0f0f055;
+}
+
 #root {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
 }
 
