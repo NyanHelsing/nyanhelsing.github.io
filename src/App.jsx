@@ -9,7 +9,7 @@ import { Blog } from "./blog/index.jsx";
 import { Workflow } from "./workflow.jsx";
 import { Tools } from "./tools/index.jsx";
 
-import { SocialMediaLinks } from "./social-media-links.jsx";
+import { Socials } from "./socials.jsx";
 import { Footer } from "./footer.jsx";
 
 import "./main.css";
@@ -23,7 +23,7 @@ export const App = () => (
             <Tools />
             <Workflow />
             <Blog />
-            <SocialMediaLinks />
+            <Socials />
         </main>
         <Footer />
     </LocatorProvider>

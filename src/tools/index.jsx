@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link } from "../link.jsx";
 import { useLocator } from "../locator.jsx";
@@ -25,7 +26,9 @@ export const Tools = () => {
             {locator.pathname === "/tools" ? (
                 <h1>Tools</h1>
             ) : (
-                <Link to="/tools">{"<<<"} Back to Tools</Link>
+                <Link to="/tools">
+                    <FontAwesomeIcon icon={"chevron-left"} /> Back to Tools
+                </Link>
             )}
 
             {toolList.map(({ Component, expanded }, toolIndex) => {
@@ -58,39 +61,9 @@ export const Tools = () => {
                                         {Component.title}
                                     </h2>
 
-                                    <button
-                                        style={{}}
-                                        onClick={() => {
-                                            event.preventDefault();
-                                            const to = `/tools/${Component.id}.html`;
-                                            window.history.pushState(
-                                                {},
-                                                "",
-                                                to
-                                            );
-                                            setLocator(
-                                                new URL(
-                                                    to,
-                                                    window.location.href
-                                                )
-                                            );
-                                            /*
-                                          setToolList((currentToolList) =>
-                                              currentToolList.map(
-                                                  (tool, toolListIndex) => ({
-                                                      ...tool,
-                                                      expanded:
-                                                          toolListIndex ===
-                                                              toolIndex &&
-                                                          !tool.expanded
-                                                  })
-                                              )
-                                          );
-                                          */
-                                        }}
-                                    >
+                                    <Link to={`/tools/${Component.id}`}>
                                         {Component.cta}
-                                    </button>
+                                    </Link>
                                 </header>
                                 {Component.description}
                             </section>

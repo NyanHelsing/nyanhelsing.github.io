@@ -1,4 +1,3 @@
-
 html {
     background-color: #bad;
     margin: 0;
@@ -11,6 +10,18 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+}
+
+a {
+    color: #1e334a;
+}
+
+pre {
+    overflow: auto;
+    border-radius: 1em;
+    padding: 1em;
+    color: #ccc;
+    background: #222;
 }
 
 code {
@@ -68,24 +79,6 @@ nav.social > ol > li {
     padding: 0 0.5em 0 0;
     font-size: 1.5em;
     line-height: 2em;
-}
-
-nav.social > ol > li:hover {
-    background-color: #ddd;
-    border-radius: 0.5em;
-}
-
-nav.social > ol > li > a {
-    text-decoration: none;
-    color: #000;
-}
-
-nav.social > ol > li > a > i {
-    text-align: center;
-    width: 2em;
-    margin: 0.3em auto 0;
-    text-decoration: none;
-    color: #000;
 }
 
 form {

@@ -4,9 +4,14 @@ import { useLocator } from "./locator.jsx";
 export const Vision = () => {
     const [locator] = useLocator();
     return (
-        new Set(["/vision.html", "/vision", "/index.html", "/", ""]).has(
-            locator.pathname
-        ) && (
+        new Set([
+            "/vision.html",
+            "/vision",
+            "/index.html",
+            "/index",
+            "/",
+            ""
+        ]).has(locator.pathname) && (
             <>
                 <p>
                     Enabling individuals to shape their own destiny cultivates

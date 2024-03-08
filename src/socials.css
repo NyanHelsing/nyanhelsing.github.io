@@ -1,0 +1,23 @@
+.social {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+nav.social > ol > li {
+    padding: 0.5em 0;
+}
+
+.social > ol > li > a {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.social > ol > li > a > svg {
+    width: 1.5em;
+    height: 1.5em;
+}

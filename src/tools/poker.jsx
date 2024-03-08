@@ -44,7 +44,7 @@ export const Poker = () => {
             <p>Let's play some poker!</p>
             <p>Here's a ticket:</p>
             <pre>{JSON.stringify(ticket, null, 2)}</pre>
-            <p>What do you think?</p>
+            <p>How much effort are you willing to bet it's going to take?</p>
 
             <h2>Players</h2>
             <ul>
