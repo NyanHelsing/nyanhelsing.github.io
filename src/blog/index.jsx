@@ -1,13 +1,14 @@
 import React, { Suspense, lazy } from "react";
 
-import { useLocator } from "../locator.jsx";
 import { Link } from "../link.jsx";
+import { useLocator } from "../locator.jsx";
 
 const posts = [
     {
         slug: "commit-your-dist.mdx",
         title: "Commit Your Dist",
-        summary: `Make the dist directory a submodule of the main repository, enabling easy deploys to GitHub Pages.`,
+        summary:
+            "Make the dist directory a submodule of the main repository, enabling easy deploys to GitHub Pages.",
         Component: lazy(() => import("./commit-your-dist.mdx"))
     }
 ];

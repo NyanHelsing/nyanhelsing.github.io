@@ -8,7 +8,7 @@ export const Workflow = () => {
     console.log(locator.pathname);
     useEffect(() => {
         if (MOUNT_PATHS.has(locator.pathname)) {
-            var retry = 15;
+            let retry = 15;
             try {
                 window.mermaid.run();
             } catch (error) {
@@ -42,7 +42,7 @@ export const Workflow = () => {
                     through from the time it is created until it is completed.
                 </p>
 
-                <pre class="mermaid">{`
+                <pre className="mermaid">{`
                 stateDiagram-v2
                     [*] --> Triage: New
                     Triage --> Refined: Fully Detailed and Prioritized
@@ -66,7 +66,7 @@ export const Workflow = () => {
                     workflow will begin.
                 </p>
                 <form>
-                    <textarea id="workflow" rows="10" cols="50"></textarea>
+                    <textarea id="workflow" rows="10" cols="50" />
                     <button type="submit">Submit</button>
                 </form>
             </>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { useLocator } from "../locator.jsx";
 import { Link } from "../link.jsx";
+import { useLocator } from "../locator.jsx";
 import { MailtoGenerator } from "./mailto-generator.jsx";
 import { Poker } from "./poker.jsx";
 
@@ -96,9 +96,8 @@ export const Tools = () => {
                             </section>
                         </>
                     );
-                } else if (
-                    locator.pathname.startsWith(`/tools/${Component.id}`)
-                ) {
+                }
+                if (locator.pathname.startsWith(`/tools/${Component.id}`)) {
                     return <Component />;
                 }
             })}

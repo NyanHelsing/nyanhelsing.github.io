@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
-import readline from "node:readline";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import readline from "node:readline";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -45,7 +45,7 @@ const runCommand = doOrDie("runCommand", (command) =>
 );
 
 // ask for the kind of bump (major, minor, patch) from stdin
-var kind = process.argv[2];
+let kind = process.argv[2];
 while (kind !== "major" && kind !== "minor" && kind !== "patch") {
     if (kind) {
         console.log(

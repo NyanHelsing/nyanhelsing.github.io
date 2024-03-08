@@ -7,16 +7,16 @@ export const TopNav = () => (
     <nav className="top">
         <ol>
             <li>
-                <Link to="/index.html">Home</Link>
+                <Link to="/index">Home</Link>
             </li>
             <li>
-                <Link to="/blog.html">Blog</Link>
+                <Link to="/blog">Blog</Link>
             </li>
             <li>
-                <Link to="/workflow.html">Workflow</Link>
+                <Link to="/workflow">Workflow</Link>
             </li>
             <li>
-                <Link to="/tools.html">Tools</Link>
+                <Link to="/tools">Tools</Link>
             </li>
         </ol>
     </nav>

@@ -11,7 +11,7 @@ const storedBody = localStorage.getItem("mailto-tool-body");
 
 console.log(storedRemember);
 
-var yetInitialized = false;
+let yetInitialized = false;
 export const MailtoGenerator = () => {
     const [locator] = useLocator();
     const [mailto, setMailto] = useState("");
@@ -80,8 +80,10 @@ export const MailtoGenerator = () => {
             <h2>You've Been sent a Portable Mailto Link</h2>
             <p>
                 The link should have opened automatically. If it didn't, it
-                might because a popup blocker blocked it. click the button below
-                to open it.
+                might because a popup blocker blocked it. Click the button below
+                to open it. Some browsers might not support this feature, if
+                that's the case, you can copy the link and paste it into your
+                normal browser's address bar.
             </p>
             <button
                 style={{
@@ -91,7 +93,8 @@ export const MailtoGenerator = () => {
                     padding: "0.5em 2em",
                     background: "#5b865b",
                     color: "white",
-                    borderRadius: "0.5em"
+                    borderRadius: "0.5em",
+                    border: "none"
                 }}
                 onClick={() => {
                     const mailto = atob(decodeURIComponent(mailtoFragment));

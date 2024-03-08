@@ -1,6 +1,6 @@
 import React from "react";
-import { urlsAreEqual } from "./urls.js";
 import { useLocator } from "./locator.jsx";
+import { urlsAreEqual } from "./urls.js";
 
 // Link component with all the accessibility features
 export const Link = ({ to, children, ...props }) => {
@@ -10,6 +10,7 @@ export const Link = ({ to, children, ...props }) => {
     if (urlsAreEqual(toUrl, locator)) {
         return (
             <a
+                href="#"
                 style={{
                     fontWeight: "bold",
                     cursor: "pointer"
@@ -35,6 +36,7 @@ export const Link = ({ to, children, ...props }) => {
 
     return (
         <a
+            href="#"
             style={{
                 cursor: "pointer"
             }}
