@@ -18,20 +18,19 @@ const doOrDie =
         }
     };
 
-const bump =
-    (kind) =>
-    ({ major, minor, patch }) => {
-        switch (kind) {
-            case "major":
-                return `${Number(major) + 1}.0.0`;
+const bump = (kind) => (currentVersion) => {
+    const [major, minor, patch] = currentVersion.split(".");
+    switch (kind) {
+        case "major":
+            return `${Number(major) + 1}.0.0`;
 
-            case "minor":
-                return `${major}.${Number(minor) + 1}.0`;
+        case "minor":
+            return `${major}.${Number(minor) + 1}.0`;
 
-            case "patch":
-                return `${major}.${minor}.${Number(patch) + 1}`;
-        }
-    };
+        case "patch":
+            return `${major}.${minor}.${Number(patch) + 1}`;
+    }
+};
 
 // Function to get the current version from package.json
 const getCurrentVersion = doOrDie("getCurrentVersion", () => {
@@ -58,31 +57,31 @@ while (kind !== "major" && kind !== "minor" && kind !== "patch") {
         output: process.stdout
     });
 
-    const result = new Promise((resolve) => {
+    const result = await new Promise((resolve) => {
         rl.question(
-            "What kind of change is this? (major/0, minor/1, patch/2)",
+            'What kind of change is this? ( enter "major"/"0", "minor"/"1", "patch"/"2")\n >>> ',
             (answer) => {
-                // TODO: Log the answer in a database
-                console.log(`Entered: ${answer}`);
-                kind = {
-                    major: "major",
-                    minor: "minor",
-                    patch: "patch",
-                    0: "major",
-                    1: "minor",
-                    2: "patch",
-                    "major/0": "major",
-                    "minor/1": "minor",
-                    "patch/2": "patch"
-                }[answer];
                 rl.close();
                 resolve(answer);
             }
         );
     });
+    // TODO: Log the answer in a database
+    console.log(`Entered: ${result}`);
+    kind = {
+        major: "major",
+        minor: "minor",
+        patch: "patch",
+        0: "major",
+        1: "minor",
+        2: "patch",
+        "major/0": "major",
+        "minor/1": "minor",
+        "patch/2": "patch"
+    }[result];
 }
 
-const version = bump()(getCurrentVersion());
+const version = bump(kind)(getCurrentVersion());
 const commitMessage = `Deploy: v${version}`;
 
 console.log(`Starting deployment for version ${version}...`);
@@ -99,4 +98,16 @@ runCommand("git add .");
 runCommand(`git commit -m "${commitMessage}"`);
 runCommand("git push");
 
+// Navigate back to the root directory
+// and update the package.json version using pnpm
+// and commit the change
+// and push
+
+process.chdir("..");
+runCommand(`pnpm version ${version} --no-git-tag-version`);
+runCommand("git add package.json");
+runCommand(`git commit -m "Bump version to ${version}"`);
+runCommand("git push");
+
+// Log the success message
 console.log("Deployment successful!");
