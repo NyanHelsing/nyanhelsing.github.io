@@ -10,6 +10,9 @@ export const TopNav = () => (
                 <Link to="/index.html">Home</Link>
             </li>
             <li>
+                <Link to="/blog.html">Blog</Link>
+            </li>
+            <li>
                 <Link to="/workflow.html">Workflow</Link>
             </li>
             <li>

@@ -10,6 +10,10 @@ export const Link = ({ to, children, ...props }) => {
     if (urlsAreEqual(toUrl, locator)) {
         return (
             <a
+                style={{
+                    fontWeight: "bold",
+                    cursor: "pointer"
+                }}
                 onClick={(event) => {
                     event.preventDefault();
                     window.history.pushState({}, "", to);
@@ -31,6 +35,9 @@ export const Link = ({ to, children, ...props }) => {
 
     return (
         <a
+            style={{
+                cursor: "pointer"
+            }}
             onClick={(event) => {
                 event.preventDefault();
                 window.history.pushState({}, "", to);

@@ -1,0 +1,4 @@
+[submodule "dist"]
+	path = dist
+	url = git@github.com:NyanHelsing/nyanhelsing.github.io.git
+	branch = deploy
