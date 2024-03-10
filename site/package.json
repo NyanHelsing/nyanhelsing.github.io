@@ -1,0 +1,32 @@
+{
+  "name": "@nyanhelsing/site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mdx-js/rollup": "^3.0.1",
+    "@nyan-helsing/header": "workspace:*",
+    "@nyan-helsing/locator": "workspace:*",
+    "@nyan-helsing/blog": "workspace:*",
+    "@nyan-helsing/socials": "workspace:*",
+    "@nyan-helsing/tools": "workspace:*",
+    "@nyan-helsing/top-nav": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^5.1.3",
+    "vite-plugin-html": "^3.2.2"
+  }
+}

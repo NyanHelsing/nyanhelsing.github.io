@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 // the icon library before any icons are used.
 import "./icons.jsx";
 
+import "./style.css";
 import { App } from "./app.jsx";
 
 createRoot(document.getElementById("root")).render(

@@ -14,9 +14,13 @@ export const BreadcrumbDataProvider = () => {
 
 export const useBreadcrumb = ({ url, label }) => {
     const thisCrumb = useRef({ url, label });
-    const [breadcrumbData, setBreadcrumbData] = useContext(BreadcrumbDataContext);
+    const [breadcrumbData, setBreadcrumbData] = useContext(
+        BreadcrumbDataContext
+    );
     useEffect(() => {
-        if (!breadcrumbData.some((crumb) => crumb.url === thisCrumb.current.url)) {
+        if (
+            !breadcrumbData.some((crumb) => crumb.url === thisCrumb.current.url)
+        ) {
             setBreadcrumbData((prevBreadcrumbData) => [
                 ...prevBreadcrumbData,
                 thisCrumb.current
@@ -24,20 +28,17 @@ export const useBreadcrumb = ({ url, label }) => {
         } else {
             setBreadcrumbData((prevBreadcrumbData) =>
                 prevBreadcrumbData.map((crumb) =>
-                    crumb === thisCrumb
-                        ? thisCrumb.current
-                        : crumb
+                    crumb === thisCrumb ? thisCrumb.current : crumb
                 )
             );
         }
         return () => {
             setBreadcrumbData((prevBreadcrumbData) =>
                 prevBreadcrumbData.filter((crumb) => crumb !== thisCrumb)
-            )
-        }
+            );
+        };
     }, [thisCrumb, breadcrumbData, setBreadcrumbData, url, label]);
-
-
+};
 
 export const Breadcrumbs = () => {
     const [breadcrumbData] = useContext(BreadcrumbDataContext);

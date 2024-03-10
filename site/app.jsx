@@ -1,15 +1,15 @@
 import React from "react";
 
-import { LocatorProvider } from "./locator.jsx";
-import { Header } from "./header.jsx";
-import { TopNav } from "./top-nav.jsx";
+import { LocatorProvider } from "@nyan-helsing/locator";
+import { Header } from "@nyan-helsing/header";
+import { TopNav } from "@nyan-helsing/top-nav";
+import { Blog } from "@nyan-helsing/blog";
 
 import { Vision } from "./vision.jsx";
-import { Blog } from "./blog/index.jsx";
 import { Workflow } from "./workflow.jsx";
-import { Tools } from "./tools/index.jsx";
+import { Tools } from "@nyan-helsing/tools";
 
-import { Socials } from "./socials.jsx";
+import { Socials } from "@nyan-helsing/socials";
 import { Footer } from "./footer.jsx";
 
 import "./main.css";

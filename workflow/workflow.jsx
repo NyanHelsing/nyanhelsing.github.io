@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useLocator } from "./locator.jsx";
+import { useLocator } from "@nyan-helsing/locator";
 
 const MOUNT_PATHS = new Set(["/workflow.html", "/workflow"]);
 export const Workflow = () => {

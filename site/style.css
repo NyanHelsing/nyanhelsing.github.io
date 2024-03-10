@@ -23,6 +23,9 @@ pre {
     color: #ccc;
     background: #222;
 }
+pre.mermaid {
+    background: rgba(0,0,0,0.1);
+}
 
 code {
  padding: 0.2em 0.3em 0.1em 0.3em;
@@ -60,7 +63,7 @@ nav a {
     border-radius: 50%;
     margin: 0 auto;
     display: block;
-    background-image: url("/nyanhelsing.png");
+    background-image: url("/images/nyanhelsing.png");
     background-size: cover;
     background-position: center;
 }

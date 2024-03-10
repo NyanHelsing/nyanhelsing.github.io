@@ -1,0 +1,17 @@
+{
+  "name": "@nyan-helsing/tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.jsx",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@nyan-helsing/mailto": "workspace:*",
+    "@nyan-helsing/poker": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocator } from "./locator.jsx";
+import { useLocator } from "@nyan-helsing/locator";
 
 export const Vision = () => {
     const [locator] = useLocator();
