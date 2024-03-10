@@ -1,26 +1,26 @@
 {
-  "name": "nyanhelsing.github.io",
-  "version": "1.0.11",
-  "module": "server.js",
-  "type": "module",
-  "scripts": {
-    "dev": "pnpm -r --parallel --stream dev",
-    "preview": "pnpm -r --parallel --stream preview",
-    "build": "pnpm -r --parallel --stream build",
-    "check": "biome check .",
-    "pages": "node scripts/deploy.mjs",
-    "fix": "biome check . --apply",
-    "fix:force": "biome check . --apply-unsafe"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "hygen": "^6.2.11"
-  },
-  "devDependencies": {
-    "glob": "^10.3.10",
-    "tsx": "^4.7.1"
-  }
+    "name": "nyanhelsing.github.io",
+    "version": "1.0.12",
+    "module": "server.js",
+    "type": "module",
+    "scripts": {
+        "dev": "pnpm -r --parallel --stream dev",
+        "preview": "pnpm -r --parallel --stream preview",
+        "build": "pnpm -r --parallel --stream build",
+        "check": "biome check .",
+        "pages": "node scripts/deploy.mjs",
+        "fix": "biome check . --apply",
+        "fix:force": "biome check . --apply-unsafe"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@biomejs/biome": "^1.6.0",
+        "hygen": "^6.2.11"
+    },
+    "devDependencies": {
+        "glob": "^10.3.10",
+        "tsx": "^4.7.1"
+    }
 }
