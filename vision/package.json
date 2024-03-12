@@ -1,0 +1,17 @@
+{
+    "name": "@nyan-helsing/vision",
+    "version": "1.0.0",
+    "description": "",
+    "main": "vision.jsx",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@nyan-helsing/locator": "workspace:*",
+        "react": "^18.2.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

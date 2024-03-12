@@ -1,12 +1,16 @@
 {
-  "name": "@nyan-helsing/locator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "locator.jsx",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@nyan-helsing/locator",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "locator.jsx",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^18.2.0"
+    }
 }

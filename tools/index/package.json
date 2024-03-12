@@ -1,17 +1,21 @@
 {
-  "name": "@nyan-helsing/tools",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.jsx",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@nyan-helsing/mailto": "workspace:*",
-    "@nyan-helsing/poker": "workspace:*"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@nyan-helsing/tools",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.jsx",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@nyan-helsing/link": "workspace:*",
+        "@nyan-helsing/locator": "workspace:*",
+        "@nyan-helsing/mailto": "workspace:*",
+        "@nyan-helsing/point-lol": "workspace:*",
+        "react": "^18.2.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

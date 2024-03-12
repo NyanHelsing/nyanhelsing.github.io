@@ -1,9 +1,13 @@
 // vite.config.js
-import { resolve } from "path";
-import { defineConfig } from "vite";
-import { createHtmlPlugin } from "vite-plugin-html";
+import { dirname, relative, resolve } from "node:path";
 import mdx from "@mdx-js/rollup";
-import { sync } from "glob";
+import { globSync } from "glob";
+import { defineConfig } from "vite";
+import { createMpaPlugin } from "vite-plugin-virtual-mpa";
+
+import { createBlogIndexPlugin } from "@nyan-helsing/blog/vite-plugin-blog-index.mjs";
+
+const __root = dirname(dirname(new URL(import.meta.url).pathname));
 
 // This helper builds a list of paths to be used in the build
 // from a data structure that is an array where each member is
@@ -13,32 +17,60 @@ const buildPaths = (siteStructure, prefix = "") => {
     return siteStructure.flatMap((page) => {
         if (Array.isArray(page)) {
             const [path, children] = page;
-            return buildPaths(children, `${prefix}/${path}`);
+            return buildPaths(children, `${prefix && `${prefix}/`}${path}`);
         }
-        return page;
+        return [[page, `${prefix && `${prefix}/`}${page}`]];
     });
 };
+
+const blogEntries = globSync(`${__root}blog/**/*.mdx`)
+    .map((path) => {
+        return relative(__root, path);
+    })
+    .map((modulePath) => {
+        return {
+            name: modulePath
+        };
+    });
+
+const pages = buildPaths([
+    "index",
+    "workflow",
+    "blog",
+    ["tools", ["index", "mailto", "poker"]],
+    "privacy",
+    "terms"
+]).map(([name, path]) => ({
+    name,
+    entry: "/entry.jsx",
+    filename: `${path}.html`,
+    template: "templates/document.ejs"
+}));
+
+const { plugin: blogIndexPlugin, pages: blogPages } =
+    await createBlogIndexPlugin({
+        entry: "/entry.jsx",
+        template: "templates/document.ejs",
+        root: "../",
+        basePath: "blog"
+    });
+
+const mpaPages = [...pages, ...blogPages];
 
 export default defineConfig({
     plugins: [
         mdx(),
-        createHtmlPlugin({
-            pages: buildPaths([
-                "index",
-                "workflow",
-                ["blog", ["commit-dist", "no-facebook"]],
-                ["tools", ["index", "mailto", "poker"]],
-                "privacy",
-                "terms"
-            ]).map((path) => ({
-                entry: "entry.jsx",
-                filename: `${path}.html`,
-                template: "templates/document.ejs"
-            }))
+        blogIndexPlugin,
+        createMpaPlugin({
+            pages: mpaPages
+            //previewRewrites: [
+            //    // If there's no index.html, you need to manually set rules for history fallback like:
+            //      { from: /.*/, to: "/home.html" }
+            //]
         })
     ],
     root: "",
     build: {
-        outDir: "../../dist"
+        outDir: "../dist"
     }
 });

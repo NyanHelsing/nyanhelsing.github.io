@@ -1,5 +1,6 @@
+import { useLocator } from "@nyan-helsing/locator";
 import React from "react";
-import { useLocator } from "./locator.jsx";
+
 import { urlsAreEqual } from "./urls.js";
 
 // Link component with all the accessibility features

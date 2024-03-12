@@ -1,12 +1,16 @@
 {
-  "name": "@nyan-helsing/top-nav",
-  "version": "1.0.0",
-  "description": "",
-  "main": "top-nav.jsx",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@nyan-helsing/top-nav",
+    "version": "1.0.0",
+    "description": "",
+    "main": "top-nav.jsx",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@nyan-helsing/link": "workspace:*",
+        "react": "^18.2.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

@@ -16,6 +16,30 @@ a {
     color: #1e334a;
 }
 
+article > a {
+    align-self: flex-end;
+    font-weight: bold;
+    font-size: 1.2em;
+
+}
+
+article > footer {
+    display: flex;
+    background: rgba(0,0,0,0);
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+article > footer > a {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1e334a;
+}
+
 pre {
     overflow: auto;
     border-radius: 1em;
@@ -27,11 +51,14 @@ pre.mermaid {
     background: rgba(0,0,0,0.1);
 }
 
-code {
- padding: 0.2em 0.3em 0.1em 0.3em;
- border-radius: 0.3em;
- margin: -0.2em 0 -0.1em 0;
+pre > code {
+    width: fit-content;
+}
 
+:not(pre) > code {
+    padding: 0.2em 0.3em 0.1em 0.3em;
+    border-radius: 0.3em;
+    margin: -0.2em 0 -0.1em 0;
     background-color: #f0f0f055;
 }
 

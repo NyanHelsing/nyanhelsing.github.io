@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "./link.jsx";
+import { Link } from "@nyan-helsing/link";
 
 import "./top-nav.css";
 

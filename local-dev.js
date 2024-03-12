@@ -1,6 +1,6 @@
 // just a really simple server to serve the static files in the current directory
 
-import path from "path";
+import path from "node:path";
 // static file server
 import express from "express";
 

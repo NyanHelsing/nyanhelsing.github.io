@@ -1,13 +1,18 @@
 {
-  "name": "@nyan-helsing/socials",
-  "version": "1.0.0",
-  "description": "",
-  "main": "socials.jsx",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@nyan-helsing/socials",
+    "version": "1.0.0",
+    "description": "",
+    "main": "socials.jsx",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "dependencies": {
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@nyan-helsing/locator": "workspace:*",
+        "react": "^18.2.0"
+    },
+    "license": "ISC"
 }

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 
-import { Link } from "../link.jsx";
-import { useLocator } from "../locator.jsx";
-import { MailtoGenerator } from "./mailto-generator.jsx";
-import { Poker } from "./poker.jsx";
+import { Link } from "@nyan-helsing/link";
+import { useLocator } from "@nyan-helsing/locator";
+import { MailtoGenerator } from "@nyan-helsing/mailto";
+import { PointLol } from "@nyan-helsing/point-lol";
 
 const MOUNT_PATHS = new Set(["/tools.html", "/tools"]);
 
@@ -16,7 +16,7 @@ export const Tools = () => {
             expanded: false
         },
         {
-            Component: Poker,
+            Component: PointLol,
             expanded: false
         }
     ]);

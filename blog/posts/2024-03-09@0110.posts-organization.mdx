@@ -1,0 +1,92 @@
+export const slug = "posts-organization";
+export const title = "Organizing Blog Posts";
+export const date = "2024-03-09";
+export const isoDate = "2024-03-09T06:10:05.903Z";
+export const cover = "organized-library.png";
+export const summary = "Organizing a blog's directory with a clear system isn't just about keeping things tidy. It's about making life easier; whether hunting for a specific post or scheduling future content. Here's why a straightforward naming convention really helps:";
+/*****************************************************************************/
+
+# Organizing Blog Posts
+
+Organizing a blog's directory with a clear system isn't just about keeping things tidy. It's about making life easier; whether hunting for a specific post or scheduling future content. Here's why a straightforward naming convention really helps:
+
+1. **Easy to Find Stuff**: Ever tried to find an old photo on your phone when they're all named "IMG_1234"? It's a pain. Imagine your blog posts are named with clear dates and titles. Suddenly, finding that specific post from 5 years ago is a breeze.
+
+2. **No Guessing the Date**: By looking at the filename, it's obvious exactly when it was created. Handy, right? Especially when trying to remember if that post about cat training was written before or after Auntie's birthday.
+
+3. **Sorts Itself Out**: Computers love order. With names like `2024.04.20@1700-my-cat-post`, files line up perfectly from oldest to newest without lifting a finger. It's like magic, but it's actually just smart naming.
+
+4. **Looks Clean**: Opening a folder to see a neatly organized list of files feels good. It's like that just-finished-perfectly-organizing-the-bookshelf feeling. Everything in its place.
+
+5. **No Weird Characters**: Ever tried to email a file and it just wouldn't because the name had weird symbols? Using simple, web-friendly characters in the post's filenames means less hassle sharing or uploading them.
+
+6. **Future You Will Thank You**: A year down the line, looking back through a trove of posts, everything will be exactly where it's expected to be - No time travel needed, just a smart naming system.
+
+In short, a good naming convention saves time, reduces stress, and just makes finding and organizing content way easier. It's one of those small efforts that pay off big time in the long run. Plus, it looks neat, and who doesn't love that?
+
+## Using a templating tool to generate posts
+
+A templating tool enables consiten and reproducible result when creating posts (or any other kind of file really).
+
+A simple template using [hygen](https://www.npmjs.com/package/hygen) could look like this:
+
+```
+---
+to: blog/posts/<%= filename %>
+---
+---
+title: <%= title %>
+slug: <%= slug %>
+date: <%= isoDate %>
+---
+# <%= title %>
+
+Your post content here...
+```
+
+It can be set up with a prompt.cjs that can prepopulate the values or they can be provided at the cli when executing the template.
+
+```
+
+module.exports = {
+    prompt: ({ prompter }) => {
+        // get the current datetime
+        // make sure to leftpad.
+        // use 24 hour time.
+        const date = new Date();
+        const yr = date.getFullYear();
+        const mo = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        const hr = String(date.getHours()).padStart(2, "0");
+        const min = String(date.getMinutes()).padStart(2, "0");
+        const datestamp = `${yr}-${mo}-${d}@${hr}${min}`;
+
+        return prompter
+            .prompt([
+                {
+                    type: "input",
+                    name: "title",
+                    message: "What is your the title of the post?"
+                },
+                {
+                    type: "input",
+                    name: "slug",
+                    message: "What is the post's slug?"
+                }
+            ])
+            .then(({ title, slug }) => ({
+                title,
+                slug,
+                date,
+                isoDate: date.toISOString(),
+                datestamp,
+                filename: `${datestamp}.${slug}.mdx`,
+                yr,
+                mo,
+                d,
+                hr,
+                min
+            }));
+    }
+};
+```

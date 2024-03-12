@@ -1,13 +1,21 @@
 {
-  "name": "@nyan-helsing/blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.jsx",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@nyan-helsing/blog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@nyan-helsing/link": "workspace:*",
+        "@nyan-helsing/locator": "workspace:*",
+        "ejs": "^3.1.9",
+        "gray-matter": "^4.0.3",
+        "react": "^18.2.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

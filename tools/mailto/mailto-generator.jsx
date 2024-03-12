@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { useLocator } from "../locator.jsx";
+import { useLocator } from "@nyan-helsing/locator";
 
 const MOUNT_PATHS = new Set(["/tools.html", "/tools"]);
 

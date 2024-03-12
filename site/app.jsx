@@ -1,18 +1,18 @@
 import React from "react";
 
-import { LocatorProvider } from "@nyan-helsing/locator";
-import { Header } from "@nyan-helsing/header";
-import { TopNav } from "@nyan-helsing/top-nav";
 import { Blog } from "@nyan-helsing/blog";
+import { Header } from "@nyan-helsing/header";
+import { LocatorProvider } from "@nyan-helsing/locator";
+import { TopNav } from "@nyan-helsing/top-nav";
 
-import { Vision } from "./vision.jsx";
-import { Workflow } from "./workflow.jsx";
 import { Tools } from "@nyan-helsing/tools";
+import { Vision } from "@nyan-helsing/vision";
+import { Workflow } from "@nyan-helsing/workflow";
 
+import { Footer } from "@nyan-helsing/footer";
 import { Socials } from "@nyan-helsing/socials";
-import { Footer } from "./footer.jsx";
 
-import "./main.css";
+import "./theme/main.css";
 
 export const App = () => (
     <LocatorProvider>

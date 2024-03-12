@@ -1,0 +1,19 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "HOST=localhost PORT=1234 pnpx y-websocket"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "y-websocket": "^1.5.4"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.2"
+  }
+}
