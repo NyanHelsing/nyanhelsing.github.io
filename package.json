@@ -8,7 +8,7 @@
         "preview": "pnpm -r --parallel --stream preview",
         "build": "pnpm -r --parallel --stream build",
         "check": "biome check .",
-        "pages": "node scripts/deploy.mjs",
+        "dist": "node scripts/deploy.mjs",
         "fix": "biome check . --apply",
         "fix:force": "biome check . --apply-unsafe"
     },
@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@biomejs/biome": "^1.6.0",
+        "config": "^3.3.11",
+        "dotenv": "^16.4.5",
         "hygen": "^6.2.11"
     },
     "devDependencies": {

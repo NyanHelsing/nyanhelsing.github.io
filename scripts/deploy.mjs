@@ -1,8 +1,12 @@
+#!/usr/bin/node
+
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import readline from "node:readline";
 import { fileURLToPath } from "node:url";
+
+
 
 const __dirname = dirname(dirname(fileURLToPath(import.meta.url)));
 const packageJsonPath = join(__dirname, "package.json");

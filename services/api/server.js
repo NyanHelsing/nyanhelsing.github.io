@@ -20,7 +20,7 @@ const httpServer = createServer();
 const io = new Server(httpServer, {
     path: "/point-lol/",
     cors: {
-        origin: "api.nyanhelsing.io"
+        origin: "https://nyanhelsing.io"
     }
 });
 

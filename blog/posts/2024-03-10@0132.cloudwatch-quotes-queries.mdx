@@ -76,20 +76,7 @@ fields @timestamp, `user-id`, `error-message`
 
 In this example, we're filtering log events based on the exact value of the `error-message` field, which is "Critical error: Timeout". The quotation marks ensure that the query engine evaluates the expression as a string literal, matching the exact value of the field.
 
-## Filtering and Glob Patterns
-
-Quotation marks are also used to evaluate glob patterns. Glob patterns are a type of wildcard that allows you to match a field's value using the asterisk (`*`) character. This is useful when you want to filter log events based on a partial match of a field's value.
-
-```plaintext
-fields @timestamp, `user-id`, `error-message`
-| filter `error-message` like "*timeout*"
-| sort @timestamp desc
-| limit 20
-```
-
-In this example, we're filtering log events based on a partial match of the `error-message` field, specifically looking for any log events where the `error-message` contains the word "timeout". The asterisks in the glob pattern allow for a partial match, making the query more flexible and inclusive.
-
-## Glob capture groups
+## Parsing Fields on the fly with Glob capture groups
 
 Glob capture groups are a powerful feature that allows you to extract specific parts of a field's value using glob patterns. This is useful when you want to extract specific pieces of information from a field's value and use them in your query.
 

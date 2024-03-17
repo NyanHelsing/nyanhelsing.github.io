@@ -1,7 +1,10 @@
 // vite.config.js
 import { dirname, relative, resolve } from "node:path";
-import mdx from "@mdx-js/rollup";
+
+import config from "config";
 import { globSync } from "glob";
+
+import mdx from "@mdx-js/rollup";
 import { defineConfig } from "vite";
 import { createMpaPlugin } from "vite-plugin-virtual-mpa";
 
@@ -17,7 +20,10 @@ const buildPaths = (siteStructure, prefix = "") => {
     return siteStructure.flatMap((page) => {
         if (Array.isArray(page)) {
             const [path, children] = page;
-            return buildPaths(children, `${prefix && `${prefix}/`}${path}`);
+            return [
+                [page, `${prefix && `${prefix}/`}${path}`],
+                ...buildPaths(children, `${prefix && `${prefix}/`}${path}`)
+            ];
         }
         return [[page, `${prefix && `${prefix}/`}${page}`]];
     });
@@ -39,7 +45,8 @@ const pages = buildPaths([
     "blog",
     ["tools", ["index", "mailto", "poker"]],
     "privacy",
-    "terms"
+    "terms",
+    "404"
 ]).map(([name, path]) => ({
     name,
     entry: "/entry.jsx",
@@ -57,12 +64,16 @@ const { plugin: blogIndexPlugin, pages: blogPages } =
 
 const mpaPages = [...pages, ...blogPages];
 
+console.log(process.env.NODE_ENV);
+console.log({ yurl: config.get("y.url") });
+
 export default defineConfig({
     plugins: [
         mdx(),
         blogIndexPlugin,
         createMpaPlugin({
-            pages: mpaPages
+            pages: mpaPages,
+            data: { config }
             //previewRewrites: [
             //    // If there's no index.html, you need to manually set rules for history fallback like:
             //      { from: /.*/, to: "/home.html" }

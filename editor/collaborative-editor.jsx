@@ -34,7 +34,7 @@ export const CollaborativeEditor = ({ roomId }) => {
 
         // Set up your Yjs provider. This line of code is different for each provider.
         const yProvider = new WebsocketProvider(
-            "ws://y.nyanhelsing.io",
+            "wss://y.nyanhelsing.io",
             roomId,
             yDoc
         );

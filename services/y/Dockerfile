@@ -40,7 +40,7 @@ FROM base
 # Copy built application
 COPY --from=build /app /app
 
-ENV HOST="y.nyanhelsing.io"
+ENV HOST="0.0.0.0"
 ENV PORT=1234
 
 # Start the server by default, this can be overwritten at runtime

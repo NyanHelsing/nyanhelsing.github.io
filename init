@@ -1,0 +1,40 @@
+# Run a script that is in the $PROJECT_ROOT/scripts dir, where $PROJECT_ROOT is the path to
+# this git repository.
+# example that executes $PROJECT_ROOT/scripts/hello
+# ```
+# $ git run hello
+# ```
+# NOTE: The script must be executable
+git config alias.run '!f() { \
+    PROJECT_ROOT="$(git rev-parse --show-toplevel)"; \
+    sh "$PROJECT_ROOT/scripts/$1"; \
+}; f'
+
+
+# Set a script that can be run with the `git run` alias as an alias itself
+# Example:
+# ```
+# $ git set-script-alias hello
+# $ git hello
+# ```
+git config alias.set-script-alias '!f() { \
+    ALIAS_NAME=$1; \
+    if [ $# -eq 1 ]; then \
+        SCRIPT_NAME=$1; \
+    else \
+        SCRIPT_NAME=$2; \
+    fi; \
+    SCRIPT_PATH="$(git rev-parse --show-toplevel)/scripts/$SCRIPT_NAME"; \
+    echo $SCRIPT_PATH; \
+    chmod +x $SCRIPT_PATH; \
+    git config alias."$ALIAS_NAME" "!zsh -c \"\\\"$SCRIPT_PATH\\\"\""; \
+}; f'
+
+# Remove a script that was set. Might be easier just to use the
+# actual git command though lol
+git config alias.remove-script-alias '!f() { git config --unset alias."$1"; }; f'
+
+# Set up the 3 management scripts this repository uses.
+git set-script-alias install install.mjs
+git set-script-alias build build.mjs
+git set-script-alias deploy deploy.mjs

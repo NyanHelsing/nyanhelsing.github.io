@@ -225,7 +225,7 @@ export const PointLol = () => {
     }, [rounds, currentRound]);
 
     useEffect(() => {
-        const socket = io("http://localhost:3000", {
+        const socket = io("https://api.nyanhelsing.io", {
             path: "/point-lol/"
         });
         socket.on("connect", () => {
@@ -477,5 +477,13 @@ export const PointLol = () => {
 PointLol.id = "pointless-poker";
 PointLol.title = "Pointless Poker";
 PointLol.cta = "Start Pointing";
-PointLol.description =
-    "A simple storypoint poker tool to help estimate the level of effort a task requires.";
+PointLol.description = (
+    <>
+        A storypoint poker tool to help estimate the level of effort a task
+        requires. The tickets details are shared and updated in real-time using
+        collaborative editing. Players can submit their estimates and see the
+        estimates of others. Featues a selection of non-numeric estimates to
+        help avoid anchoring bias, and a few other features to help make the
+        process more fun and engaging.
+    </>
+);
