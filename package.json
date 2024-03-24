@@ -1,6 +1,6 @@
 {
     "name": "nyanhelsing.github.io",
-    "version": "1.1.21",
+    "version": "1.1.22",
     "module": "server.js",
     "type": "module",
     "scripts": {
