@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { useLocator } from "@nyan-helsing/locator";
+import { Short } from "./short.jsx";
 
 const MOUNT_PATHS = new Set(["/tools.html", "/tools"]);
 
@@ -331,9 +332,9 @@ export const MailtoGenerator = () => {
 
                     <h3>Portable mailto link</h3>
                     <p>
-                        This link enables the mailto to be used in apps like{" "}
-                        <i>linktr.ee</i> that might not directly support links
-                        that use the <code>mailto</code> protocol.
+                        This link enables the mailto to be used in apps that
+                        might not directly support links that use the
+                        <code>mailto</code> protocol.
                     </p>
                     {portableMailto ? (
                         <pre
@@ -390,8 +391,10 @@ export const MailtoGenerator = () => {
                             );
                         }}
                     >
-                        Copy portable mailto link to clipboard
+                        Copy fragment mailto link to clipboard
                     </button>
+
+                    <Short mailtoFragment={portableMailto} />
 
                     <h3>Embedding in a Web Page</h3>
                     <p>

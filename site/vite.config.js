@@ -65,7 +65,7 @@ const { plugin: blogIndexPlugin, pages: blogPages } =
 const mpaPages = [...pages, ...blogPages];
 
 console.log(process.env.NODE_ENV);
-console.log({ yurl: config.get("y.url") });
+//console.log({ yurl: config.get("y.url") });
 
 export default defineConfig({
     plugins: [

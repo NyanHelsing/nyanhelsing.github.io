@@ -1,12 +1,2 @@
 packages:
-  - "api"
-  - "blog"
-  - "editor"
-  - "layout/*"
-  - "routing/*"
-  - "site"
-  - "services/*"
-  - "socials"
-  - "tools/*"
-  - "vision"
-  - "workflow"
+  - "packages/*"

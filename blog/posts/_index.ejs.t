@@ -9,6 +9,7 @@ export const posts = [
             cover: "<%- post.cover -%>" || "cover-fallback.png",
             tags: "<%= JSON.stringify(post?.tags ?? []) %>",
             path: "<%- post.path -%>",
+            mastodonPostId: "<%- post.mastodonPostId -%>",
             Component: lazy(() => import("@nyan-helsing/blog/<%- post.modPath -%>")),
        }
     <% }) %>

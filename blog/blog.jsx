@@ -3,8 +3,10 @@ import React, { Suspense, lazy } from "react";
 
 import { Link } from "@nyan-helsing/link";
 import { useLocator } from "@nyan-helsing/locator";
+import { Comments } from "@nyan-helsing/commenting";
 
 import { posts } from "virtual:posts";
+const id = "112119988279391292";
 
 export const Blog = () => {
     const [locator] = useLocator();
@@ -20,7 +22,14 @@ export const Blog = () => {
                 </Link>
             )}
 
-            {posts.map(({ slug, title, summary, cover, Component }) => {
+            {posts.map(({
+                slug, 
+                title,
+                summary,
+                cover,
+                mastodonPostId,
+                Component
+            }) => {
                 if (locator.pathname === "/blog") {
                     return (
                         <article
@@ -80,6 +89,10 @@ export const Blog = () => {
                                 style={{ width: "100%" }}
                             />
                             <Component />
+                            <h1>Comments</h1>
+                            {mastodonPostId && (
+                                <Comments for={mastodonPostId} />
+                            )}
                         </Suspense>
                     );
                 }

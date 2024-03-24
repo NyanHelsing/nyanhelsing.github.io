@@ -11,10 +11,11 @@
     <body>
         <div id="root"></div>
         <script type="module">
-            const _config = new Map([
-                ["y.server.url", "<%= config.get("y.server.url") %>"],
-                ["api.server.url", "<%= config.get("api.server.url") %>"]
+            /*const _config = new Map([
+                ["y.server.url", "<%= /*config.get("y.server.url")*/ %>"],
+                ["api.server.url", "<%= /*config.get("api.server.url")*/ %>"]
             ]);
+            */
             globalThis.config = {
                 get: _config.get.bind(_config)
             }
