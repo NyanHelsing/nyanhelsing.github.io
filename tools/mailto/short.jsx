@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Short = ({
     mailtoFragment
 }) => {
-    const [m2ShortKey, setM2ShortKey] = React.useState(false);
+    const [m2ShortKey, setM2ShortKey] = useState(false);
     return (
         <form>
             <h2>
@@ -15,6 +15,7 @@ export const Short = ({
                 <aside className="info">
                     No shortlink generated yet
                 </aside>
+            )}
             <button
                 onClick={async (e) => {
                     e.preventDefault();
@@ -26,7 +27,7 @@ export const Short = ({
                         body: mailtoFragment
                     });
                     const key = await res.text();
-                    setShort(Key);
+                    setM2ShortKey(key);
                 }}
             >
                 Generate Mailto Shortlink

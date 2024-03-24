@@ -19,7 +19,6 @@
     "enquirer": "^2.4.1",
     "glob": "^10.3.10",
     "level": "^8.0.1",
-    "nodegit": "^0.27.0",
     "openai": "^4.28.4"
   },
   "devDependencies": {
